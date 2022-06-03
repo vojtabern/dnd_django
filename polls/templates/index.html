@@ -21,9 +21,9 @@
                 </p>
                 <p class="card-text">
                     <strong>Class:</strong>
-                    <a href="#">{{ character.dnd_class }}</a>
+
                 </p>
-                <a href="#" class="btn btn-primary">Podrobnosti</a>
+                <a href="{% url 'character_detail' character.pk %}" class="btn btn-primary">Podrobnosti</a>
             </div>
         </div>
     </div>

@@ -8,17 +8,25 @@ def index(request):
 
     characters = Character.objects.order_by('-level')[:3]
 
+    classes = Class.objects.all()
+
     context = {
         'num_characters': num_characters,
-        'characters': characters
+        'characters': characters,
+        'classes': classes
     }
 
     return render(request, 'index.html', context=context)
 
 
+class CharacterDetailView(DetailView):
+
+    model = Character
+    context_object_name = 'character_detail'
+    template_name = 'character_detail.html'
+
+
 class ClassDetailView(DetailView):
-    # Nastavení požadovaného modelu
     model = Class
-    # Pojmenování objektu, v němž budou šabloně předána data z modelu (tj. databázové tabulky)
     context_object_name = 'class_detail'
     template_name = 'class_detail.html'
