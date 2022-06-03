@@ -8,6 +8,7 @@
 </div>
 <div class="row">
     {% for character in characters %}
+
     <div class="col-sm-4">
         <div class="card">
             {%if character.character_image %}
@@ -21,7 +22,7 @@
                 </p>
                 <p class="card-text">
                     <strong>Class:</strong>
-
+                    <a href="{% url 'class_detail' character.dnd_class.pk %}">{{ character.dnd_class }}</a>
                 </p>
                 <a href="{% url 'character_detail' character.pk %}" class="btn btn-primary">Podrobnosti</a>
             </div>
