@@ -1,6 +1,13 @@
 from django.db import models
 
 
+def class_path(instance, filename):
+    return "class/" + str(instance.name) + "/skin/" + filename
+
+
+def character_path(instance, filename):
+    return "character/" + str(instance.name) + "/name/" + filename
+
 
 class Player(models.Model):
     player_id = models.IntegerField(default=0, primary_key=True)
@@ -62,7 +69,7 @@ class Class(models.Model):
     class_name = models.CharField(max_length=20, primary_key=True)
     class_description = models.TextField()
     bonuses = models.TextField()
-    class_picture = models.ImageField(upload_to='polls/static/img/', default='NULL')
+    class_picture = models.ImageField(upload_to='class_path', default='NULL')
 
     class Meta:
         ordering = ["class_name"]
@@ -100,7 +107,7 @@ class Character(models.Model):
     level = models.ForeignKey(Level, on_delete=models.CASCADE)
     weapon = models.ForeignKey(Weapons, on_delete=models.CASCADE)
     dnd_class = models.ForeignKey(Class, on_delete=models.CASCADE)
-    character_image = models.ImageField(upload_to='polls/static/img/', default='NULL')
+    character_image = models.ImageField(upload_to='character_path', default='NULL')
 
     class Meta:
         ordering = ["character_name"]

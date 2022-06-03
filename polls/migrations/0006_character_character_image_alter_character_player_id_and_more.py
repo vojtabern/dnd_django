@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='character',
             name='character_image',
-            field=models.ImageField(default='NULL', upload_to='polls/static/img/'),
+            field=models.ImageField(default='NULL', upload_to='polls/static/media/'),
         ),
         migrations.AlterField(
             model_name='character',

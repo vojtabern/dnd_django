@@ -41,6 +41,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='class',
             name='class_picture',
-            field=models.ImageField(default='NULL', upload_to='static/img/'),
+            field=models.ImageField(default='NULL', upload_to='static/media/'),
         ),
     ]

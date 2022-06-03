@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='class',
             name='class_picture',
-            field=models.ImageField(default='NULL', upload_to='polls/static/img/'),
+            field=models.ImageField(default='NULL', upload_to='polls/static/media/'),
         ),
     ]

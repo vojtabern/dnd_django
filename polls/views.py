@@ -21,5 +21,4 @@ class ClassDetailView(DetailView):
     model = Class
     # Pojmenování objektu, v němž budou šabloně předána data z modelu (tj. databázové tabulky)
     context_object_name = 'class_detail'
-    # Umístění a název šablony
-    template_name = 'class/class_detail.html'
+    template_name = 'class_detail.html'
