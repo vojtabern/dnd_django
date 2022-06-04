@@ -9,7 +9,6 @@
     <!--Načtení adresy statických souborů webu -musí být před prvním použití identifikátoru static -->
     {% load static %}
 
-    <!--Připojení vlastního CSS souboru umístěného ve struktuře složky static -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
@@ -21,7 +20,6 @@
 {% endblock %}
 <main>
     <div class="container-fluid">
-        <!--Zde bude vsunut blok s obsahem aktuální stránky -->
         {% block content %}{% endblock %}
     </div>
 </main>
@@ -29,7 +27,6 @@
     {% include "page/footer.html" %}
 {% endblock %}
 
-<!--Připojení externích JS knihoven --><!--jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
     </script>
     <!--Popper JS -->

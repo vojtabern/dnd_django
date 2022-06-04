@@ -22,6 +22,28 @@ def index(request):
     return render(request, 'index.html', context=context)
 
 
+def class_detail(request):
+
+    skills = Skills.objects.all()
+
+    context = {
+        'skills': skills
+    }
+
+    return render(request, 'class/class_detail.html', context=context)
+
+
+def navbar(request):
+
+    classes = Class.objects.all()
+
+    context = {
+        'classes': classes,
+    }
+
+    return render(request, 'page/navbar.html', context=context)
+
+
 class CharacterDetailView(DetailView):
 
     model = Character

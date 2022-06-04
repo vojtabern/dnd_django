@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+<nav class="navbar navbar-expand-md bg-info navbar-dark">
     <a class="navbar-brand text-warning" href="{% url 'index' %}">D&Đ</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -11,9 +11,16 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Players</a>
             </li>
-            <li class="nav-item"><i class="bi bi-chevron-right"></i>
-                <a class="nav-link" href="#">Classes</a>
-            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Classes
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {%for class in classes%}
+                  <a class="dropdown-item" href="{% url 'class_detail' class.pk %}">{{class.class_name}}</a>
+                    {%endfor%}
+                </div>
+             </li>
         </ul>
     </div>
 </nav>
