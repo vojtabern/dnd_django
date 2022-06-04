@@ -1,4 +1,4 @@
-from polls.models import Class, Character, Player, Level
+from polls.models import Class, Character, Player, Level, Skills
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
@@ -10,10 +10,13 @@ def index(request):
 
     classes = Class.objects.all()
 
+    skills = Skills.objects.all()
+
     context = {
         'num_characters': num_characters,
         'characters': characters,
-        'classes': classes
+        'classes': classes,
+        'skills': skills
     }
 
     return render(request, 'index.html', context=context)

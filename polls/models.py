@@ -64,20 +64,6 @@ class Weapons(models.Model):
     def __str__(self):
         return self.name_of_weapon
 
-
-class Class(models.Model):
-    class_name = models.CharField(max_length=20, primary_key=True)
-    class_description = models.TextField()
-    bonuses = models.TextField()
-    class_picture = models.ImageField(upload_to='class_path', default='NULL')
-
-    class Meta:
-        ordering = ["class_name"]
-
-    def __str__(self):
-        return self.class_name
-
-
 class Skills(models.Model):
     skill_id = models.IntegerField(primary_key=True)
     skill_name = models.CharField(max_length=50)
@@ -90,15 +76,18 @@ class Skills(models.Model):
         return self.skill_name
 
 
-class Class_has_Skills(models.Model):
-    class_name = models.ForeignKey(Class, on_delete=models.CASCADE, verbose_name="Class")
-    skill_id = models.ForeignKey(Skills, on_delete=models.CASCADE, verbose_name="Skills")
+class Class(models.Model):
+    class_name = models.CharField(max_length=20, primary_key=True)
+    class_description = models.TextField()
+    bonuses = models.TextField()
+    class_picture = models.ImageField(upload_to='class_path', default='NULL')
+    skill_id = models.ManyToManyField(Skills, verbose_name="Skills")
 
     class Meta:
         ordering = ["class_name"]
 
     def __str__(self):
-        return str(self.class_name)
+        return self.class_name
 
 
 class Character(models.Model):
