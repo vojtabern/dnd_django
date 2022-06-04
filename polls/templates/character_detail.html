@@ -2,30 +2,40 @@
 {% block title %}Character {{ character_detail.character_name }} detail{% endblock %}
 
 {% block content %}
-    <div class="container" data-aos="fade-up">
+<div class="bg-dark">
+    <div class="container bg-secondary">
         <div class="section-title text-center">
-
-          <h2>{{ character_detail.character_name }}</h2>
-          <p class="separator">{{ character_detail.dnd_class }}</p>
+          <h1 class="text-uppercase display-6">{{ character_detail.character_name }}</h1>
+          <p>
+            <a class="btn btn-secondary active" role="button" aria-pressed="true" href="{% url 'class_detail' character_detail.dnd_class.pk %}">{{ character_detail.dnd_class }}</a>
+          </p>
         </div>
       </div>
 
-      <div class="container">
-        <div class="row">
+      <div class="container ">
+        <div class="row ">
 
-          <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-            <div class="card">
+          <div class="col-md-6 col-lg-4 ">
+            <div class="card bg-dark">
               <img class="card-img-top" src="{{ character_detail.character_image.url }}" alt="img">
               <h4>Picture of the character</h4>
             </div>
           </div>
 
-          <div class="col-md-6 col-lg-8 pl-5" data-aos="zoom-in" data-aos-delay="200">
-            <div class="feature-block">
-              <h4>Character background story</h4>
-              <p>{{character_detail.character_background}}</p>
+          <div class="col-md-6 col-lg-8 pl-5 bg-secondary ">
+            <div class="row">
+              <div class="col-md-8">
+                <h4>{{character_detail.character_name}} background story</h4>
+                <p>{{character_detail.character_background}}</p>
+              </div>
+                <div class="col-md-4 pt-5 text-white border-left border-light">
+                  <h6>Additional information</h6>
+                  <p>Weapon: {{character_detail.weapon}}</p>
+                  <p>Level: {{character_detail.level}}</p>
+                </div>
             </div>
           </div>
         </div>
       </div>
+</div>
 {% endblock %}

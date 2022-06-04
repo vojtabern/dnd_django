@@ -5,47 +5,24 @@ from django.views.generic import ListView, DetailView
 
 def index(request):
     num_characters = Character.objects.all().count()
-
     characters = Character.objects.order_by('-level')[:3]
-
     classes = Class.objects.all()
-
     skills = Skills.objects.all()
-
+    players = Player.objects.all()
     context = {
         'num_characters': num_characters,
         'characters': characters,
         'classes': classes,
-        'skills': skills
+        'skills': skills,
+        'players': players
     }
 
     return render(request, 'index.html', context=context)
 
 
-def class_detail(request):
-
-    skills = Skills.objects.all()
-
-    context = {
-        'skills': skills
-    }
-
-    return render(request, 'class/class_detail.html', context=context)
-
-
-def navbar(request):
-
-    classes = Class.objects.all()
-
-    context = {
-        'classes': classes,
-    }
-
-    return render(request, 'page/navbar.html', context=context)
 
 
 class CharacterDetailView(DetailView):
-
     model = Character
     context_object_name = 'character_detail'
     template_name = 'character_detail.html'

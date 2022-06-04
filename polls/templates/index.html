@@ -3,12 +3,11 @@
 {% block content %}
 <div class="row mt-3 mb-3 bg-warning p-3">
     <div class="col-sm-12">
-        <h2 class="text-center">Postavy</h2>
+        <h2 class="text-center">Characters</h2>
     </div>
 </div>
 <div class="row">
     {% for character in characters %}
-
     <div class="col-sm-4">
         <div class="card">
             {%if character.character_image %}
