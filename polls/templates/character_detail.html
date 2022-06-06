@@ -7,7 +7,7 @@
         <div class="section-title text-center">
           <h1 class="text-uppercase display-6">{{ character_detail.character_name }}</h1>
           <p>
-            <a class="btn btn-secondary active" role="button" aria-pressed="true" href="{% url 'class_detail' character_detail.dnd_class.pk %}">{{ character_detail.dnd_class }}</a>
+            <a class="btn btn-secondary active" role="button" aria-pressed="true" href="/polls/class/{{character_detail.dnd_class}}">{{ character_detail.dnd_class }}</a>
           </p>
         </div>
       </div>
