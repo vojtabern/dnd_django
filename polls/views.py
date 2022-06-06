@@ -21,7 +21,6 @@ def index(request):
 
 
 def CharacterDetailView(request, pk):
-    model = Character
     num_characters = Character.objects.all().count()
     character = Character.objects.get(pk=pk)
     characters = Character.objects.order_by('-level')[:3]
@@ -29,16 +28,16 @@ def CharacterDetailView(request, pk):
     classes = Class.objects.all()
     skills = Skills.objects.all()
     players = Player.objects.all()
+    level = Level.objects.all()
     context = {
         'num_characters': num_characters,
         'character_detail': character,
         'classes': classes,
         'characters': characters,
         'skills': skills,
+        'levels': level,
         'players': players
     }
-    context_object_name = 'character_detail'
-    template_name = 'character_detail.html'
 
     return render(request, 'character_detail.html', context=context)
 
@@ -57,8 +56,6 @@ def ClassDetailView(request, pk):
         'classes': classes,
         'players': players
     }
-    context_object_name = 'class_detail'
-    template_name = 'class_detail.html'
 
     return render(request, 'class_detail.html', context=context)
 

@@ -31,7 +31,15 @@
                 <div class="col-md-4 pt-5 text-white border-left border-light">
                   <h6>Additional information</h6>
                   <p>Weapon: {{character_detail.weapon}}</p>
-                  <p>Level: {{character_detail.level}}</p>
+                  {%with actual_level=character_detail.level.pk%}
+                  {%for level in levels|slice:"actual_level:actual_level" %}
+                  {%if actual_level == level.level%}
+                      <p>Level: {{level.level}}</p>
+                      <p>Health: {{level.health_dice}}</p>
+                      <p>Maximum Health: {{level.max_health}}</p>
+                  {%endif%}
+                  {% endfor %}
+                  {%endwith%}
                 </div>
             </div>
           </div>
