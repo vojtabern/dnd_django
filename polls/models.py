@@ -97,7 +97,7 @@ class Character(models.Model):
     weapon = models.ForeignKey(Weapons, on_delete=models.CASCADE)
     dnd_class = models.ForeignKey(Class, on_delete=models.CASCADE)
     character_image = models.ImageField(upload_to='character_path', default='NULL')
-    character_background = models.TextField(verbose_name="Background story", default='Žebrák')
+    character_background = models.TextField(verbose_name="Background story", default='Homeless')
 
     class Meta:
         ordering = ["character_name"]

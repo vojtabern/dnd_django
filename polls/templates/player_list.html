@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}players{% endblock %}
+{% block content %}
+    <div class="bg-dark">
+<div class="container">
+    <div class="row">
+    {% for player in players %}
+        <div class="col-md-3 p-3">
+            <div class="card bg-secondary p-2 border border-white">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body text-white">
+                <p class="card-text "><strong>Surrname:</strong> {{ player.surrname }}</p>
+                  <p class="card-text"><strong>Lastname:</strong> {{ player.lastname }}</p>
+                    <p class="card-text text-center">Characters</p>
+              <hr class="border border-white">
+              <p class="card-text">
+              {% with actual_player=player.player_id %}
+                  {% for character in characters %}
+                      {% if character.player_id.pk == actual_player %}
+                            <a href="{% url 'character_detail' character.pk %}">-{{ character.character_name }}</a> <br>
+                      {% endif %}
+                  {% endfor %}
+                </p>
+              {% endwith %}
+
+              </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+    </div>
+{% endblock %}

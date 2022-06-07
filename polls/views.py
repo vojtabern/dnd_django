@@ -44,7 +44,6 @@ def CharacterDetailView(request, pk):
 
 
 def ClassDetailView(request, pk):
-    model = Class
     classe = Class.objects.get(class_name=pk)
     characters = Character.objects.order_by('-level')[:3]
     skills = Skills.objects.all()
@@ -59,4 +58,20 @@ def ClassDetailView(request, pk):
     }
 
     return render(request, 'class_detail.html', context=context)
+
+
+class PlayerListView(ListView):
+    model = Player
+    template_name = "player_list.html"
+
+    def get_context_data(self, **kwargs):
+        players = Player.objects.all()
+        classes = Class.objects.all()
+        characters = Character.objects.all()
+        context = {
+            'classes': classes,
+            'players' : players,
+            'characters': characters
+        }
+        return context
 
