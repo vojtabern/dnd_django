@@ -9,10 +9,15 @@ def character_path(instance, filename):
     return "character/" + str(instance.name) + "/name/" + filename
 
 
+def player_path(instance, filename):
+    return "player/" + str(instance.name) + "/his_name/" + filename
+
+
 class Player(models.Model):
     player_id = models.IntegerField(default=0, primary_key=True)
     surrname = models.CharField(max_length=45)
     lastname = models.CharField(max_length=45)
+    player_picture = models.ImageField(upload_to='player_path', default='NULL')
 
     class Meta:
         ordering = ["lastname", "surrname"]
