@@ -8,7 +8,7 @@
     {% for player in players %}
         <div class="col-md-3 p-3">
             <div class="card bg-secondary p-2 border border-white">
-              <img class="card-img-top rounded-circle mx-auto" style="width: 45%" src="{{player.player_picture.url}}" alt="player image">
+              <img class="card-img-top rounded-circle mx-auto border border-dark" style="width: 35%; object-fit: cover" src="{{player.player_picture.url}}" alt="player image">
               <div class="card-body text-white">
                 <p class="card-text "><strong>Surrname:</strong> {{ player.surrname }}</p>
                   <p class="card-text"><strong>Lastname:</strong> {{ player.lastname }}</p>
@@ -17,8 +17,8 @@
               <p class="card-text">
               {% with actual_player=player.player_id %}
                   {% for character in characters %}
-                      {% if character.player_id.pk == actual_player %}
-                            <a href="{% url 'character_detail' character.pk %}" class="text-white">-{{ character.character_name }}</a> <br>
+                      {% if character.player_id.pk == actual_player%}
+                            <a href="{% url 'character_detail' character.pk %}" class="text-white">-{{ character.character_name }}</a> ({{ character.dnd_class }})<br>
                       {% endif %}
                   {% endfor %}
                 </p>
