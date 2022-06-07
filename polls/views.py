@@ -5,13 +5,15 @@ from django.views.generic import ListView, DetailView
 
 def index(request):
     num_characters = Character.objects.all().count()
-    characters = Character.objects.order_by('-level')[:3]
+    characters = Character.objects.order_by('-level')
+    charakters =  Character.objects.order_by('-level')[:3]
     classes = Class.objects.all()
     skills = Skills.objects.all()
     players = Player.objects.all()
     context = {
         'num_characters': num_characters,
         'characters': characters,
+        'char_vypis': charakters,
         'classes': classes,
         'skills': skills,
         'players': players
@@ -23,7 +25,7 @@ def index(request):
 def CharacterDetailView(request, pk):
     num_characters = Character.objects.all().count()
     character = Character.objects.get(pk=pk)
-    characters = Character.objects.order_by('-level')[:3]
+    characters = Character.objects.order_by('-level')
     weapons = Weapons.objects.all()
     classes = Class.objects.all()
     skills = Skills.objects.all()
@@ -45,7 +47,7 @@ def CharacterDetailView(request, pk):
 
 def ClassDetailView(request, pk):
     classe = Class.objects.get(class_name=pk)
-    characters = Character.objects.order_by('-level')[:3]
+    characters = Character.objects.order_by('-level')
     skills = Skills.objects.all()
     players = Player.objects.all()
     classes = Class.objects.all()
