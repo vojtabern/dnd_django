@@ -30,9 +30,19 @@
               </div>
                 <div class="col-md-4 pt-5 text-white border-left border-light">
                   <h6>Additional information</h6>
-                  <p>Weapon: {{character_detail.weapon}}</p>
+                {% with actual_weapon=character_detail.weapon.pk %}
+                    {% for weapon in weapons %}
+                        {% if actual_weapon == weapon.idweapon  %}
+                            <p>Weapon: {{weapon.name_of_weapon}}</p>
+                            <p>Type of weapon: {{weapon.type_of_weapon}}</p>
+                            <p>Damage: {{weapon.damage}} / Damage type: {{ weapon.damage_type }}</p>
+                            <p>Price of weapon: {{ weapon.price }} Golds</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endwith %}
+                <hr class="border border-white">
                   {%with actual_level=character_detail.level.pk%}
-                  {%for level in levels|slice:"actual_level:actual_level" %}
+                  {%for level in levels %}
                   {%if actual_level == level.level%}
                       <p>Level: {{level.level}}</p>
                       <p>Health: {{level.health_dice}}</p>

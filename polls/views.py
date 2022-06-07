@@ -1,4 +1,4 @@
-from polls.models import Class, Character, Player, Level, Skills
+from polls.models import Class, Character, Player, Level, Skills, Weapons
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
@@ -24,7 +24,7 @@ def CharacterDetailView(request, pk):
     num_characters = Character.objects.all().count()
     character = Character.objects.get(pk=pk)
     characters = Character.objects.order_by('-level')[:3]
-
+    weapons = Weapons.objects.all()
     classes = Class.objects.all()
     skills = Skills.objects.all()
     players = Player.objects.all()
@@ -36,6 +36,7 @@ def CharacterDetailView(request, pk):
         'characters': characters,
         'skills': skills,
         'levels': level,
+        'weapons': weapons,
         'players': players
     }
 
